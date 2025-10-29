@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
+  <changeSet id="010-sale_commande_line-constraints" author="mehdi">
+    <addAutoIncrement tableName="sale_commande_line" columnName="id" columnDataType="BIGINT" incrementBy="1" startWith="1"/>
+    <addPrimaryKey tableName="sale_commande_line" columnNames="id" constraintName="pk_sale_commande_line"/>
+    <createIndex tableName="sale_commande_line" indexName="idx_sale_commande_line_uuid" unique="true">
+      <column name="uuid"/>
+    </createIndex>
+    <addForeignKeyConstraint constraintName="fk_sale_commande_line_sale_commande_id_sale_commande" baseTableName="sale_commande_line" baseColumnNames="sale_commande_id" referencedTableName="sale_commande" referencedColumnNames="id"/>
+    <createIndex tableName="sale_commande_line" indexName="idx_sale_commande_line_sale_commande_id">
+      <column name="sale_commande_id"/>
+    </createIndex>
+    <addForeignKeyConstraint constraintName="fk_sale_commande_line_product_id_product" baseTableName="sale_commande_line" baseColumnNames="product_id" referencedTableName="product" referencedColumnNames="id"/>
+    <createIndex tableName="sale_commande_line" indexName="idx_sale_commande_line_product_id">
+      <column name="product_id"/>
+    </createIndex>
+  </changeSet>
+</databaseChangeLog>

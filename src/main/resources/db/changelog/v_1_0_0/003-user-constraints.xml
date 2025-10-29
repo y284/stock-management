@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
+  <changeSet id="003-user-constraints" author="mehdi">
+    <addAutoIncrement tableName="user" columnName="id" columnDataType="BIGINT" incrementBy="1" startWith="1"/>
+    <addPrimaryKey tableName="user" columnNames="id" constraintName="pk_user"/>
+    <addUniqueConstraint tableName="user" columnNames="username" constraintName="uq_user_username"/>
+    <createIndex tableName="user" indexName="idx_user_uuid" unique="true">
+      <column name="uuid"/>
+    </createIndex>
+    <addForeignKeyConstraint constraintName="fk_user_warehouse_id_warehouse" baseTableName="user" baseColumnNames="warehouse_id" referencedTableName="warehouse" referencedColumnNames="id"/>
+    <createIndex tableName="user" indexName="idx_user_warehouse_id">
+      <column name="warehouse_id"/>
+    </createIndex>
+  </changeSet>
+</databaseChangeLog>

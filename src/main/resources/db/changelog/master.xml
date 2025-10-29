@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
+  <include file="v_1_0_0/000-postgres-extensions.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/001-entreprise-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/002-warehouse-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/003-user-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/004-category-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/005-product-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/006-stock_level-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/007-client-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/008-supplier-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/009-sale_commande-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/010-sale_commande_line-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/011-supplier_commande-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/012-supplier_commande_line-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/013-invoice_client-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/014-invoice_supplier-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/001-entreprise-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/002-warehouse-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/003-user-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/004-category-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/005-product-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/006-stock_level-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/007-client-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/008-supplier-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/009-sale_commande-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/010-sale_commande_line-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/011-supplier_commande-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/012-supplier_commande_line-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/013-invoice_client-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/014-invoice_supplier-constraints.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>
