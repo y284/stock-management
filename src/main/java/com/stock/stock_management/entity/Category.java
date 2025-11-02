@@ -18,7 +18,8 @@ import org.hibernate.annotations.Comment;
     },
     indexes = {
         @Index(name = "idx_category_uuid", columnList = "uuid"),
-        @Index(name = "idx_category_name", columnList = "name")
+        @Index(name = "idx_category_name", columnList = "name"),
+        @Index(name = "idx_category_parent_id", columnList = "parent_id")
     }
 )
 public class Category extends BaseEntity {
@@ -28,11 +29,8 @@ public class Category extends BaseEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", nullable = false, unique = true, length = 64)
+    @Column(name = "name", nullable = false, unique = true, length = 255)
     private String name;
-
-    @Column(name = "details", length = 255)
-    private String details;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id", nullable = true)

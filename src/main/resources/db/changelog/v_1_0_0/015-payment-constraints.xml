@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
+  <changeSet id="015-payment-constraints" author="mehdi">
+    <addAutoIncrement tableName="payment" columnName="id" columnDataType="BIGINT" incrementBy="1" startWith="1"/>
+    <addPrimaryKey tableName="payment" columnNames="id" constraintName="pk_payment"/>
+    <createIndex tableName="payment" indexName="idx_payment_uuid" unique="true">
+      <column name="uuid"/>
+    </createIndex>
+    <addForeignKeyConstraint constraintName="fk_payment_sales_order_id_sales_order" baseTableName="payment" baseColumnNames="sales_order_id" referencedTableName="sales_order" referencedColumnNames="id"/>
+    <createIndex tableName="payment" indexName="idx_payment_sales_order_id">
+      <column name="sales_order_id"/>
+    </createIndex>
+  </changeSet>
+</databaseChangeLog>

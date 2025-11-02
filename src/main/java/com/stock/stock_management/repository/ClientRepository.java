@@ -7,9 +7,9 @@ public interface ClientRepository extends BaseRepository<Client, Long> {
     boolean existsByEmail(String email);
     boolean existsByEmailAndIdNot(String email, Long id);
     java.util.Optional<Client> findByEmailIgnoreCase(String email);
-    boolean existsByRib(String rib);
-    boolean existsByRibAndIdNot(String rib, Long id);
-    java.util.Optional<Client> findByRibIgnoreCase(String rib);
+    boolean existsByIban(String iban);
+    boolean existsByIbanAndIdNot(String iban, Long id);
+    java.util.Optional<Client> findByIbanIgnoreCase(String iban);
     long countByWarehouseId(Long warehouseId);
 
 }

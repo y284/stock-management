@@ -17,7 +17,9 @@ import org.hibernate.annotations.Comment;
         @UniqueConstraint(name = "uk_client_uuid", columnNames = {"uuid"})
     },
     indexes = {
-        @Index(name = "idx_client_uuid", columnList = "uuid")
+        @Index(name = "idx_client_uuid", columnList = "uuid"),
+        @Index(name = "idx_client_email", columnList = "email"),
+        @Index(name = "idx_client_warehouse_id", columnList = "warehouse_id")
     }
 )
 public class Client extends BaseEntity {
@@ -33,12 +35,15 @@ public class Client extends BaseEntity {
     @Column(name = "email", unique = true, length = 255)
     private String email;
 
-    @Column(name = "rib", nullable = false, unique = true, length = 255)
-    private String rib;
+    @Column(name = "iban", nullable = false, unique = true, length = 34)
+    private String iban;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "warehouse_id", nullable = false)
     private Warehouse warehouse;
+
+    @Column(name = "is_active")
+    private Boolean isActive;
 
 
 }

@@ -17,8 +17,8 @@ import java.time.*;
 public class WarehouseDto extends BaseDto {
 
     private Long id;
-    @NotNull @Size(max = 32) private String code;
     @NotNull @Size(max = 255) private String name;
-    @NotNull private Long entrepriseId;
+    @NotNull @Size(max = 32) private String code;
+    @NotNull private Long enterpriseId;
 
 }

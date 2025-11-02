@@ -18,7 +18,8 @@ import org.hibernate.annotations.Comment;
     },
     indexes = {
         @Index(name = "idx_product_uuid", columnList = "uuid"),
-        @Index(name = "idx_product_sku", columnList = "sku")
+        @Index(name = "idx_product_sku", columnList = "sku"),
+        @Index(name = "idx_product_category_id", columnList = "category_id")
     }
 )
 public class Product extends BaseEntity {
@@ -37,12 +38,18 @@ public class Product extends BaseEntity {
     @Column(name = "price", precision = 12, scale = 2)
     private java.math.BigDecimal price;
 
+    @Column(name = "vat_rate", precision = 5, scale = 4)
+    private java.math.BigDecimal vatRate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = true)
     private Category category;
 
-    @Column(name = "tva")
-    private Long tva;
+    @Column(name = "unit_of_measure", length = 32)
+    private String unitOfMeasure;
+
+    @Column(name = "is_active")
+    private Boolean isActive;
 
 
 }

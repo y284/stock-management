@@ -20,7 +20,7 @@ import com.stock.stock_management.error.ForeignKeyNotFoundException;
 import com.stock.stock_management.error.MissingRequiredFieldException;
 import com.stock.stock_management.error.ReferentialIntegrityException;
 import com.stock.stock_management.repository.WarehouseRepository;
-import com.stock.stock_management.repository.SupplierCommandeRepository;
+import com.stock.stock_management.repository.PurchaseOrderRepository;
 import com.stock.stock_management.mapper.SupplierMapper;
 import com.stock.stock_management.repository.SupplierRepository;
 import com.stock.stock_management.service.SupplierService;
@@ -33,7 +33,7 @@ public class SupplierServiceImpl implements SupplierService {
     private final SupplierMapper mapper;
 
     private final WarehouseRepository warehouseRepository;
-    private final SupplierCommandeRepository supplierCommandeRepository;
+    private final PurchaseOrderRepository purchaseOrderRepository;
 
     // ========= Create =========
     @Override
@@ -147,24 +147,24 @@ public class SupplierServiceImpl implements SupplierService {
     // ========= Prechecks derived from schema/spec =========
     private void precheckCreate(SupplierDto dto) {
         if (dto.getFullname() == null) { throw new MissingRequiredFieldException("fullname is required"); }
-        if (dto.getRib() == null) { throw new MissingRequiredFieldException("rib is required"); }
+        if (dto.getIban() == null) { throw new MissingRequiredFieldException("iban is required"); }
         if (dto.getWarehouseId() == null) { throw new MissingRequiredFieldException("warehouse_id is required"); }
         if (dto.getEmail() != null && repository.existsByEmail(dto.getEmail())) { throw new DuplicateResourceException("supplier with email already exists"); }
-        if (dto.getRib() != null && repository.existsByRib(dto.getRib())) { throw new DuplicateResourceException("supplier with rib already exists"); }
+        if (dto.getIban() != null && repository.existsByIban(dto.getIban())) { throw new DuplicateResourceException("supplier with iban already exists"); }
         if (dto.getWarehouseId() != null && !warehouseRepository.existsById(dto.getWarehouseId())) { throw new ForeignKeyNotFoundException("warehouse_id references missing warehouse"); }
     }
 
     private void precheckUpdate(Long id, SupplierDto dto) {
         if (dto.getFullname() == null) { throw new MissingRequiredFieldException("fullname is required"); }
-        if (dto.getRib() == null) { throw new MissingRequiredFieldException("rib is required"); }
+        if (dto.getIban() == null) { throw new MissingRequiredFieldException("iban is required"); }
         if (dto.getWarehouseId() == null) { throw new MissingRequiredFieldException("warehouse_id is required"); }
         if (dto.getEmail() != null && repository.existsByEmailAndIdNot(dto.getEmail(), id)) { throw new DuplicateResourceException("supplier with email already exists"); }
-        if (dto.getRib() != null && repository.existsByRibAndIdNot(dto.getRib(), id)) { throw new DuplicateResourceException("supplier with rib already exists"); }
+        if (dto.getIban() != null && repository.existsByIbanAndIdNot(dto.getIban(), id)) { throw new DuplicateResourceException("supplier with iban already exists"); }
         if (dto.getWarehouseId() != null && !warehouseRepository.existsById(dto.getWarehouseId())) { throw new ForeignKeyNotFoundException("warehouse_id references missing warehouse"); }
     }
 
     // ========= Delete guard (child refs) =========
     private void guardDelete(Long id) {
-        if (supplierCommandeRepository.countBySupplierId(id) > 0) { throw new ReferentialIntegrityException("supplier has dependent supplier_commande records"); }
+        if (purchaseOrderRepository.countBySupplierId(id) > 0) { throw new ReferentialIntegrityException("supplier has dependent purchase_order records"); }
     }
 }

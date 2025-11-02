@@ -17,8 +17,8 @@ import java.time.*;
 public class StockLevelDto extends BaseDto {
 
     private StockLevelIdDto id;
-    private Long totalQty;
-    private Long currentQty;
-    private Long stockAlertQty;
+    @Digits(integer = 11, fraction = 3) @PositiveOrZero private java.math.BigDecimal currentQty;
+    @Digits(integer = 11, fraction = 3) @PositiveOrZero private java.math.BigDecimal reservedQty;
+    @Digits(integer = 11, fraction = 3) @PositiveOrZero private java.math.BigDecimal stockAlertQty;
 
 }

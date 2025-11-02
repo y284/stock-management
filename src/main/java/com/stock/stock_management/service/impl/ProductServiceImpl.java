@@ -20,9 +20,9 @@ import com.stock.stock_management.error.ForeignKeyNotFoundException;
 import com.stock.stock_management.error.MissingRequiredFieldException;
 import com.stock.stock_management.error.ReferentialIntegrityException;
 import com.stock.stock_management.repository.CategoryRepository;
-import com.stock.stock_management.repository.SaleCommandeLineRepository;
+import com.stock.stock_management.repository.PurchaseOrderLineRepository;
+import com.stock.stock_management.repository.SalesOrderLineRepository;
 import com.stock.stock_management.repository.StockLevelRepository;
-import com.stock.stock_management.repository.SupplierCommandeLineRepository;
 import com.stock.stock_management.mapper.ProductMapper;
 import com.stock.stock_management.repository.ProductRepository;
 import com.stock.stock_management.service.ProductService;
@@ -35,9 +35,9 @@ public class ProductServiceImpl implements ProductService {
     private final ProductMapper mapper;
 
     private final CategoryRepository categoryRepository;
+    private final PurchaseOrderLineRepository purchaseOrderLineRepository;
+    private final SalesOrderLineRepository salesOrderLineRepository;
     private final StockLevelRepository stockLevelRepository;
-    private final SaleCommandeLineRepository saleCommandeLineRepository;
-    private final SupplierCommandeLineRepository supplierCommandeLineRepository;
 
     // ========= Create =========
     @Override
@@ -165,8 +165,8 @@ public class ProductServiceImpl implements ProductService {
 
     // ========= Delete guard (child refs) =========
     private void guardDelete(Long id) {
+        if (purchaseOrderLineRepository.countByProductId(id) > 0) { throw new ReferentialIntegrityException("product has dependent purchase_order_line records"); }
+        if (salesOrderLineRepository.countByProductId(id) > 0) { throw new ReferentialIntegrityException("product has dependent sales_order_line records"); }
         if (stockLevelRepository.countByProductId(id) > 0) { throw new ReferentialIntegrityException("product has dependent stock_level records"); }
-        if (saleCommandeLineRepository.countByProductId(id) > 0) { throw new ReferentialIntegrityException("product has dependent sale_commande_line records"); }
-        if (supplierCommandeLineRepository.countByProductId(id) > 0) { throw new ReferentialIntegrityException("product has dependent supplier_commande_line records"); }
     }
 }

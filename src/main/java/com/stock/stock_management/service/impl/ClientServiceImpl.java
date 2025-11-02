@@ -20,7 +20,7 @@ import com.stock.stock_management.error.ForeignKeyNotFoundException;
 import com.stock.stock_management.error.MissingRequiredFieldException;
 import com.stock.stock_management.error.ReferentialIntegrityException;
 import com.stock.stock_management.repository.WarehouseRepository;
-import com.stock.stock_management.repository.SaleCommandeRepository;
+import com.stock.stock_management.repository.SalesOrderRepository;
 import com.stock.stock_management.mapper.ClientMapper;
 import com.stock.stock_management.repository.ClientRepository;
 import com.stock.stock_management.service.ClientService;
@@ -33,7 +33,7 @@ public class ClientServiceImpl implements ClientService {
     private final ClientMapper mapper;
 
     private final WarehouseRepository warehouseRepository;
-    private final SaleCommandeRepository saleCommandeRepository;
+    private final SalesOrderRepository salesOrderRepository;
 
     // ========= Create =========
     @Override
@@ -147,24 +147,24 @@ public class ClientServiceImpl implements ClientService {
     // ========= Prechecks derived from schema/spec =========
     private void precheckCreate(ClientDto dto) {
         if (dto.getFullname() == null) { throw new MissingRequiredFieldException("fullname is required"); }
-        if (dto.getRib() == null) { throw new MissingRequiredFieldException("rib is required"); }
+        if (dto.getIban() == null) { throw new MissingRequiredFieldException("iban is required"); }
         if (dto.getWarehouseId() == null) { throw new MissingRequiredFieldException("warehouse_id is required"); }
         if (dto.getEmail() != null && repository.existsByEmail(dto.getEmail())) { throw new DuplicateResourceException("client with email already exists"); }
-        if (dto.getRib() != null && repository.existsByRib(dto.getRib())) { throw new DuplicateResourceException("client with rib already exists"); }
+        if (dto.getIban() != null && repository.existsByIban(dto.getIban())) { throw new DuplicateResourceException("client with iban already exists"); }
         if (dto.getWarehouseId() != null && !warehouseRepository.existsById(dto.getWarehouseId())) { throw new ForeignKeyNotFoundException("warehouse_id references missing warehouse"); }
     }
 
     private void precheckUpdate(Long id, ClientDto dto) {
         if (dto.getFullname() == null) { throw new MissingRequiredFieldException("fullname is required"); }
-        if (dto.getRib() == null) { throw new MissingRequiredFieldException("rib is required"); }
+        if (dto.getIban() == null) { throw new MissingRequiredFieldException("iban is required"); }
         if (dto.getWarehouseId() == null) { throw new MissingRequiredFieldException("warehouse_id is required"); }
         if (dto.getEmail() != null && repository.existsByEmailAndIdNot(dto.getEmail(), id)) { throw new DuplicateResourceException("client with email already exists"); }
-        if (dto.getRib() != null && repository.existsByRibAndIdNot(dto.getRib(), id)) { throw new DuplicateResourceException("client with rib already exists"); }
+        if (dto.getIban() != null && repository.existsByIbanAndIdNot(dto.getIban(), id)) { throw new DuplicateResourceException("client with iban already exists"); }
         if (dto.getWarehouseId() != null && !warehouseRepository.existsById(dto.getWarehouseId())) { throw new ForeignKeyNotFoundException("warehouse_id references missing warehouse"); }
     }
 
     // ========= Delete guard (child refs) =========
     private void guardDelete(Long id) {
-        if (saleCommandeRepository.countByClientId(id) > 0) { throw new ReferentialIntegrityException("client has dependent sale_commande records"); }
+        if (salesOrderRepository.countByClientId(id) > 0) { throw new ReferentialIntegrityException("client has dependent sales_order records"); }
     }
 }

@@ -7,9 +7,9 @@
     <createIndex tableName="warehouse" indexName="idx_warehouse_uuid" unique="true">
       <column name="uuid"/>
     </createIndex>
-    <addForeignKeyConstraint constraintName="fk_warehouse_entreprise_id_entreprise" baseTableName="warehouse" baseColumnNames="entreprise_id" referencedTableName="entreprise" referencedColumnNames="id"/>
-    <createIndex tableName="warehouse" indexName="idx_warehouse_entreprise_id">
-      <column name="entreprise_id"/>
+    <addForeignKeyConstraint constraintName="fk_warehouse_enterprise_id_enterprise" baseTableName="warehouse" baseColumnNames="enterprise_id" referencedTableName="enterprise" referencedColumnNames="id"/>
+    <createIndex tableName="warehouse" indexName="idx_warehouse_enterprise_id">
+      <column name="enterprise_id"/>
     </createIndex>
   </changeSet>
 </databaseChangeLog>

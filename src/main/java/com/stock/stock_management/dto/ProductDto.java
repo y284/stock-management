@@ -20,7 +20,9 @@ public class ProductDto extends BaseDto {
     @NotNull @Size(max = 64) private String sku;
     @NotNull @Size(max = 255) private String name;
     @Digits(integer = 10, fraction = 2) @PositiveOrZero private java.math.BigDecimal price;
+    @Digits(integer = 1, fraction = 4) private java.math.BigDecimal vatRate;
     private Long categoryId;
-    private Long tva;
+    @Size(max = 32) private String unitOfMeasure;
+    private Boolean isActive;
 
 }

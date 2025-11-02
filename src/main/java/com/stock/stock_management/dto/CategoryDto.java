@@ -17,8 +17,7 @@ import java.time.*;
 public class CategoryDto extends BaseDto {
 
     private Long id;
-    @NotNull @Size(max = 64) private String name;
-    @Size(max = 255) private String details;
+    @NotNull @Size(max = 255) private String name;
     private Long parentId;
 
 }

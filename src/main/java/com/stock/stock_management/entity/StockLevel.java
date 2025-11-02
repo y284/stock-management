@@ -35,14 +35,14 @@ public class StockLevel extends BaseEntity {
     @JoinColumn(name = "warehouse_id", nullable = false)
     private Warehouse warehouse;
 
-    @Column(name = "total_qty")
-    private Long totalQty;
+    @Column(name = "current_qty", precision = 14, scale = 3)
+    private java.math.BigDecimal currentQty;
 
-    @Column(name = "current_qty")
-    private Long currentQty;
+    @Column(name = "reserved_qty", precision = 14, scale = 3)
+    private java.math.BigDecimal reservedQty;
 
-    @Column(name = "stock_alert_qty")
-    private Long stockAlertQty;
+    @Column(name = "stock_alert_qty", precision = 14, scale = 3)
+    private java.math.BigDecimal stockAlertQty;
 
 
 }

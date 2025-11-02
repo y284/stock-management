@@ -19,13 +19,13 @@ import com.stock.stock_management.error.DuplicateResourceException;
 import com.stock.stock_management.error.ForeignKeyNotFoundException;
 import com.stock.stock_management.error.MissingRequiredFieldException;
 import com.stock.stock_management.error.ReferentialIntegrityException;
-import com.stock.stock_management.repository.EntrepriseRepository;
+import com.stock.stock_management.repository.EnterpriseRepository;
 import com.stock.stock_management.repository.ClientRepository;
-import com.stock.stock_management.repository.SaleCommandeRepository;
+import com.stock.stock_management.repository.PurchaseOrderRepository;
+import com.stock.stock_management.repository.SalesOrderRepository;
 import com.stock.stock_management.repository.StockLevelRepository;
-import com.stock.stock_management.repository.SupplierCommandeRepository;
 import com.stock.stock_management.repository.SupplierRepository;
-import com.stock.stock_management.repository.UserRepository;
+import com.stock.stock_management.repository.UsersRepository;
 import com.stock.stock_management.mapper.WarehouseMapper;
 import com.stock.stock_management.repository.WarehouseRepository;
 import com.stock.stock_management.service.WarehouseService;
@@ -37,13 +37,13 @@ public class WarehouseServiceImpl implements WarehouseService {
     private final WarehouseRepository repository;
     private final WarehouseMapper mapper;
 
-    private final EntrepriseRepository entrepriseRepository;
-    private final UserRepository userRepository;
-    private final StockLevelRepository stockLevelRepository;
-    private final ClientRepository clientRepository;
+    private final EnterpriseRepository enterpriseRepository;
+    private final UsersRepository usersRepository;
     private final SupplierRepository supplierRepository;
-    private final SaleCommandeRepository saleCommandeRepository;
-    private final SupplierCommandeRepository supplierCommandeRepository;
+    private final ClientRepository clientRepository;
+    private final PurchaseOrderRepository purchaseOrderRepository;
+    private final SalesOrderRepository salesOrderRepository;
+    private final StockLevelRepository stockLevelRepository;
 
     // ========= Create =========
     @Override
@@ -51,7 +51,7 @@ public class WarehouseServiceImpl implements WarehouseService {
     public WarehouseDto create(WarehouseDto dto) {
         precheckCreate(dto);
         Warehouse entity = mapper.toEntity(dto);
-        if (dto.getEntrepriseId() != null) { entity.setEntreprise(entrepriseRepository.getRef(dto.getEntrepriseId())); }
+        if (dto.getEnterpriseId() != null) { entity.setEnterprise(enterpriseRepository.getRef(dto.getEnterpriseId())); }
         entity = repository.save(entity);
         return mapper.toDto(entity);
     }
@@ -82,7 +82,7 @@ public class WarehouseServiceImpl implements WarehouseService {
         if (replaced.getVersion() == null) {
             replaced.setVersion(current.getVersion());
         }
-        if (dto.getEntrepriseId() != null) { replaced.setEntreprise(entrepriseRepository.getRef(dto.getEntrepriseId())); }
+        if (dto.getEnterpriseId() != null) { replaced.setEnterprise(enterpriseRepository.getRef(dto.getEnterpriseId())); }
 
         replaced = repository.save(replaced);
         return mapper.toDto(replaced);
@@ -98,7 +98,7 @@ public class WarehouseServiceImpl implements WarehouseService {
         precheckUpdate(id, dto);
         // Non-null fields only (per mapper config)
         mapper.updateEntityFromDto(dto, entity);
-        if (dto.getEntrepriseId() != null) { entity.setEntreprise(entrepriseRepository.getRef(dto.getEntrepriseId())); }
+        if (dto.getEnterpriseId() != null) { entity.setEnterprise(enterpriseRepository.getRef(dto.getEnterpriseId())); }
         entity = repository.save(entity);
         return mapper.toDto(entity);
     }
@@ -156,28 +156,28 @@ public class WarehouseServiceImpl implements WarehouseService {
 
     // ========= Prechecks derived from schema/spec =========
     private void precheckCreate(WarehouseDto dto) {
-        if (dto.getCode() == null) { throw new MissingRequiredFieldException("code is required"); }
         if (dto.getName() == null) { throw new MissingRequiredFieldException("name is required"); }
-        if (dto.getEntrepriseId() == null) { throw new MissingRequiredFieldException("entreprise_id is required"); }
+        if (dto.getCode() == null) { throw new MissingRequiredFieldException("code is required"); }
+        if (dto.getEnterpriseId() == null) { throw new MissingRequiredFieldException("enterprise_id is required"); }
         if (dto.getCode() != null && repository.existsByCode(dto.getCode())) { throw new DuplicateResourceException("warehouse with code already exists"); }
-        if (dto.getEntrepriseId() != null && !entrepriseRepository.existsById(dto.getEntrepriseId())) { throw new ForeignKeyNotFoundException("entreprise_id references missing entreprise"); }
+        if (dto.getEnterpriseId() != null && !enterpriseRepository.existsById(dto.getEnterpriseId())) { throw new ForeignKeyNotFoundException("enterprise_id references missing enterprise"); }
     }
 
     private void precheckUpdate(Long id, WarehouseDto dto) {
-        if (dto.getCode() == null) { throw new MissingRequiredFieldException("code is required"); }
         if (dto.getName() == null) { throw new MissingRequiredFieldException("name is required"); }
-        if (dto.getEntrepriseId() == null) { throw new MissingRequiredFieldException("entreprise_id is required"); }
+        if (dto.getCode() == null) { throw new MissingRequiredFieldException("code is required"); }
+        if (dto.getEnterpriseId() == null) { throw new MissingRequiredFieldException("enterprise_id is required"); }
         if (dto.getCode() != null && repository.existsByCodeAndIdNot(dto.getCode(), id)) { throw new DuplicateResourceException("warehouse with code already exists"); }
-        if (dto.getEntrepriseId() != null && !entrepriseRepository.existsById(dto.getEntrepriseId())) { throw new ForeignKeyNotFoundException("entreprise_id references missing entreprise"); }
+        if (dto.getEnterpriseId() != null && !enterpriseRepository.existsById(dto.getEnterpriseId())) { throw new ForeignKeyNotFoundException("enterprise_id references missing enterprise"); }
     }
 
     // ========= Delete guard (child refs) =========
     private void guardDelete(Long id) {
-        if (userRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent user records"); }
-        if (stockLevelRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent stock_level records"); }
-        if (clientRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent client records"); }
+        if (usersRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent users records"); }
         if (supplierRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent supplier records"); }
-        if (saleCommandeRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent sale_commande records"); }
-        if (supplierCommandeRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent supplier_commande records"); }
+        if (clientRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent client records"); }
+        if (purchaseOrderRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent purchase_order records"); }
+        if (salesOrderRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent sales_order records"); }
+        if (stockLevelRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent stock_level records"); }
     }
 }

@@ -10,6 +10,7 @@ import org.hibernate.annotations.Comment;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
+import java.util.Objects;
 
 @MappedSuperclass
 @Getter
@@ -35,7 +36,6 @@ public abstract class BaseEntity implements java.io.Serializable {
     @PrePersist
     protected void onPrePersist() {
         if (this.uuid == null) this.uuid = UUID.randomUUID();
-        if (this.version == null) this.version = 0L;
     }
 
     @Override
@@ -46,5 +46,5 @@ public abstract class BaseEntity implements java.io.Serializable {
     }
 
     @Override
-    public int hashCode() { return 31; }
+    public int hashCode() { return Objects.hash(uuid); }
 }

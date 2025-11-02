@@ -18,7 +18,8 @@ import org.hibernate.annotations.Comment;
     },
     indexes = {
         @Index(name = "idx_warehouse_uuid", columnList = "uuid"),
-        @Index(name = "idx_warehouse_code", columnList = "code")
+        @Index(name = "idx_warehouse_code", columnList = "code"),
+        @Index(name = "idx_warehouse_enterprise_id", columnList = "enterprise_id")
     }
 )
 public class Warehouse extends BaseEntity {
@@ -28,15 +29,15 @@ public class Warehouse extends BaseEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "code", nullable = false, unique = true, length = 32)
-    private String code;
-
     @Column(name = "name", nullable = false, length = 255)
     private String name;
 
+    @Column(name = "code", nullable = false, unique = true, length = 32)
+    private String code;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "entreprise_id", nullable = false)
-    private Entreprise entreprise;
+    @JoinColumn(name = "enterprise_id", nullable = false)
+    private Enterprise enterprise;
 
 
 }

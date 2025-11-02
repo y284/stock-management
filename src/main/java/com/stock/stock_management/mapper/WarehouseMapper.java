@@ -1,6 +1,6 @@
 package com.stock.stock_management.mapper;
 
-import com.stock.stock_management.entity.Entreprise;
+import com.stock.stock_management.entity.Enterprise;
 
 import org.mapstruct.*;
 import java.util.*;
@@ -11,12 +11,12 @@ import com.stock.stock_management.dto.WarehouseDto;
 public interface WarehouseMapper extends BaseAuditMapper {
 
     @Mappings({
-        @Mapping(target = "entreprise", ignore = true)
+        @Mapping(target = "enterprise", ignore = true)
     })
     Warehouse toEntity(WarehouseDto dto);
 
     @Mappings({
-        @Mapping(source = "entreprise.id", target = "entrepriseId")
+        @Mapping(source = "enterprise.id", target = "enterpriseId")
     })
     WarehouseDto toDto(Warehouse entity);
 
