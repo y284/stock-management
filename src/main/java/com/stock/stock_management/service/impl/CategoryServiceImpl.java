@@ -20,10 +20,8 @@ import com.stock.stock_management.error.ForeignKeyNotFoundException;
 import com.stock.stock_management.error.MissingRequiredFieldException;
 import com.stock.stock_management.error.ReferentialIntegrityException;
 import com.stock.stock_management.repository.CategoryRepository;
-import com.stock.stock_management.repository.CategoryRepository;
 import com.stock.stock_management.repository.ProductRepository;
 import com.stock.stock_management.mapper.CategoryMapper;
-import com.stock.stock_management.repository.CategoryRepository;
 import com.stock.stock_management.service.CategoryService;
 
 @Service
@@ -33,7 +31,6 @@ public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository repository;
     private final CategoryMapper mapper;
 
-    private final CategoryRepository categoryRepository;
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
 
