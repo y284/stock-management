@@ -4,25 +4,25 @@ import com.stock.stock_management.entity.Warehouse;
 
 import org.mapstruct.*;
 import java.util.*;
-import com.stock.stock_management.entity.Users;
-import com.stock.stock_management.dto.UsersDto;
+import com.stock.stock_management.entity.User;
+import com.stock.stock_management.dto.UserDto;
 
 @Mapper(config = BaseMapperConfig.class)
-public interface UsersMapper extends BaseAuditMapper {
+public interface UserMapper extends BaseAuditMapper {
 
     @Mappings({
         @Mapping(target = "warehouse", ignore = true)
     })
-    Users toEntity(UsersDto dto);
+    User toEntity(UserDto dto);
 
     @Mappings({
         @Mapping(source = "warehouse.id", target = "warehouseId")
     })
-    UsersDto toDto(Users entity);
+    UserDto toDto(User entity);
 
-    List<UsersDto> toDtoList(List<Users> entities);
+    List<UserDto> toDtoList(List<User> entities);
 
     // PATCH: update only non-null properties from DTO -> Entity
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateEntityFromDto(UsersDto dto, @MappingTarget Users entity);
+    void updateEntityFromDto(UserDto dto, @MappingTarget User entity);
 }

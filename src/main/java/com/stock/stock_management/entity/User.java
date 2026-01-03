@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.persistence.Index;
 import lombok.*;
 import org.hibernate.annotations.Comment;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Getter
 @Setter
@@ -11,19 +13,21 @@ import org.hibernate.annotations.Comment;
 @AllArgsConstructor
 @Builder
 @Entity
+@SQLDelete(sql = "UPDATE user SET deleted = true, deleted_at = now() WHERE uuid = ?")
+@Where(clause = "deleted = false")
 @Table(
-    name = "users", schema = "public",
+    name = "user", schema = "public",
     uniqueConstraints = {
-        @UniqueConstraint(name = "uk_users_uuid", columnNames = {"uuid"})
+        @UniqueConstraint(name = "uk_user_uuid", columnNames = {"uuid"})
     },
     indexes = {
-        @Index(name = "idx_users_uuid", columnList = "uuid"),
-        @Index(name = "idx_users_username", columnList = "username"),
-        @Index(name = "idx_users_email", columnList = "email"),
-        @Index(name = "idx_users_warehouse_id", columnList = "warehouse_id")
+        @Index(name = "idx_user_uuid", columnList = "uuid"),
+        @Index(name = "idx_user_username", columnList = "username"),
+        @Index(name = "idx_user_email", columnList = "email"),
+        @Index(name = "idx_user_warehouse_id", columnList = "warehouse_id")
     }
 )
-public class Users extends BaseEntity {
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +42,9 @@ public class Users extends BaseEntity {
 
     @Column(name = "lastname", nullable = false, length = 128)
     private String lastname;
+
+    @Column(name = "rib", nullable = true, unique = true, length = 34)
+    private String rib;
 
     @Column(name = "email", nullable = false, unique = true, length = 255)
     private String email;

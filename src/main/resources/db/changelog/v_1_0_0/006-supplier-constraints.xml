@@ -4,7 +4,7 @@
     <addAutoIncrement tableName="supplier" columnName="id" columnDataType="BIGINT" incrementBy="1" startWith="1"/>
     <addPrimaryKey tableName="supplier" columnNames="id" constraintName="pk_supplier"/>
     <addUniqueConstraint tableName="supplier" columnNames="email" constraintName="uq_supplier_email"/>
-    <addUniqueConstraint tableName="supplier" columnNames="iban" constraintName="uq_supplier_iban"/>
+    <addUniqueConstraint tableName="supplier" columnNames="rib" constraintName="uq_supplier_rib"/>
     <createIndex tableName="supplier" indexName="idx_supplier_uuid" unique="true">
       <column name="uuid"/>
     </createIndex>

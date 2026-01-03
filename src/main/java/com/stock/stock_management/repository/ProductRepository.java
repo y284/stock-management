@@ -4,9 +4,9 @@ import com.stock.stock_management.entity.Product;
 
 public interface ProductRepository extends BaseRepository<Product, Long> {
 
-    boolean existsBySku(String sku);
-    boolean existsBySkuAndIdNot(String sku, Long id);
-    java.util.Optional<Product> findBySkuIgnoreCase(String sku);
+    boolean existsByDescription(String description);
+    boolean existsByDescriptionAndIdNot(String description, Long id);
+    java.util.Optional<Product> findByDescriptionIgnoreCase(String description);
     long countByCategoryId(Long categoryId);
 
 }

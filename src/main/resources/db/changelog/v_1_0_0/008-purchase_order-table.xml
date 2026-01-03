@@ -15,6 +15,12 @@
       <column name="version" type="BIGINT" defaultValue="0">
         <constraints nullable="false"/>
       </column>
+      <column name="deleted" type="BOOLEAN" defaultValue="false">
+        <constraints nullable="false"/>
+      </column>
+      <column name="deleted_at" type="TIMESTAMPTZ">
+        <constraints nullable="true"/>
+      </column>
       <column name="order_date" type="TIMESTAMPTZ" defaultValueComputed="NOW()"/>
       <column name="total_amount" type="NUMERIC(12,2)" defaultValue="0.00"/>
       <column name="amount_paid" type="NUMERIC(12,2)" defaultValue="0.00"/>

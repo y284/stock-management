@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.persistence.Index;
 import lombok.*;
 import org.hibernate.annotations.Comment;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Getter
 @Setter
@@ -11,6 +13,8 @@ import org.hibernate.annotations.Comment;
 @AllArgsConstructor
 @Builder
 @Entity
+@SQLDelete(sql = "UPDATE purchase_order SET deleted = true, deleted_at = now() WHERE uuid = ?")
+@Where(clause = "deleted = false")
 @Table(
     name = "purchase_order", schema = "public",
     uniqueConstraints = {

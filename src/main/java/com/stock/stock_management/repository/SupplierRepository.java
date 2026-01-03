@@ -7,9 +7,9 @@ public interface SupplierRepository extends BaseRepository<Supplier, Long> {
     boolean existsByEmail(String email);
     boolean existsByEmailAndIdNot(String email, Long id);
     java.util.Optional<Supplier> findByEmailIgnoreCase(String email);
-    boolean existsByIban(String iban);
-    boolean existsByIbanAndIdNot(String iban, Long id);
-    java.util.Optional<Supplier> findByIbanIgnoreCase(String iban);
+    boolean existsByRib(String rib);
+    boolean existsByRibAndIdNot(String rib, Long id);
+    java.util.Optional<Supplier> findByRibIgnoreCase(String rib);
     long countByWarehouseId(Long warehouseId);
 
 }

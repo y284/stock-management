@@ -6,7 +6,6 @@ import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.annotations.Comment;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -33,9 +32,20 @@ public abstract class BaseEntity implements java.io.Serializable {
     @Column(name = "version", nullable = false)
     private Long version;
 
+    @Column(name = "deleted", nullable = false)
+    private boolean deleted = false;
+
+    @Column(name = "deleted_at")
+    private OffsetDateTime deletedAt;
+
     @PrePersist
     protected void onPrePersist() {
         if (this.uuid == null) this.uuid = UUID.randomUUID();
+    }
+
+    public void softDelete() {
+        this.deleted = true;
+        this.deletedAt = OffsetDateTime.now();
     }
 
     @Override
@@ -46,5 +56,7 @@ public abstract class BaseEntity implements java.io.Serializable {
     }
 
     @Override
-    public int hashCode() { return Objects.hash(uuid); }
+    public int hashCode() {
+        return Objects.hash(uuid);
+    }
 }

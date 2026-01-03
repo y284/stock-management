@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.persistence.Index;
 import lombok.*;
 import org.hibernate.annotations.Comment;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Getter
 @Setter
@@ -11,6 +13,8 @@ import org.hibernate.annotations.Comment;
 @AllArgsConstructor
 @Builder
 @Entity
+@SQLDelete(sql = "UPDATE supplier SET deleted = true, deleted_at = now() WHERE uuid = ?")
+@Where(clause = "deleted = false")
 @Table(
     name = "supplier", schema = "public",
     uniqueConstraints = {
@@ -35,8 +39,8 @@ public class Supplier extends BaseEntity {
     @Column(name = "email", unique = true, length = 255)
     private String email;
 
-    @Column(name = "iban", nullable = false, unique = true, length = 34)
-    private String iban;
+    @Column(name = "rib", nullable = true, unique = true, length = 34)
+    private String rib;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "warehouse_id", nullable = false)

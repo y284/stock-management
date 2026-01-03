@@ -10,5 +10,8 @@
     <createIndex tableName="sales_invoice" indexName="idx_sales_invoice_sales_order_id">
       <column name="sales_order_id"/>
     </createIndex>
+    <createIndex tableName="sales_invoice" indexName="idx_sales_invoice_invoice_number">
+      <column name="invoice_number"/>
+    </createIndex>
   </changeSet>
 </databaseChangeLog>

@@ -17,6 +17,7 @@ import java.time.*;
 public class SalesInvoiceDto extends BaseDto {
 
     private Long id;
+    private Long invoiceNumber;
     @NotNull private Long salesOrderId;
     private java.time.OffsetDateTime issueDate;
     private java.time.OffsetDateTime dueDate;

@@ -15,12 +15,18 @@
       <column name="version" type="BIGINT" defaultValue="0">
         <constraints nullable="false"/>
       </column>
+      <column name="deleted" type="BOOLEAN" defaultValue="false">
+        <constraints nullable="false"/>
+      </column>
+      <column name="deleted_at" type="TIMESTAMPTZ">
+        <constraints nullable="true"/>
+      </column>
       <column name="fullname" type="VARCHAR(255)">
         <constraints nullable="false"/>
       </column>
       <column name="email" type="VARCHAR(255)"/>
-      <column name="iban" type="VARCHAR(34)">
-        <constraints nullable="false"/>
+      <column name="rib" type="VARCHAR(34)">
+        <constraints nullable="true"/>
       </column>
       <column name="warehouse_id" type="BIGINT">
         <constraints nullable="false"/>

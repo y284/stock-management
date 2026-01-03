@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.persistence.Index;
 import lombok.*;
 import org.hibernate.annotations.Comment;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Getter
 @Setter
@@ -11,6 +13,8 @@ import org.hibernate.annotations.Comment;
 @AllArgsConstructor
 @Builder
 @Entity
+@SQLDelete(sql = "UPDATE sales_invoice SET deleted = true, deleted_at = now() WHERE uuid = ?")
+@Where(clause = "deleted = false")
 @Table(
     name = "sales_invoice", schema = "public",
     uniqueConstraints = {
@@ -18,6 +22,7 @@ import org.hibernate.annotations.Comment;
     },
     indexes = {
         @Index(name = "idx_sales_invoice_uuid", columnList = "uuid"),
+        @Index(name = "idx_sales_invoice_invoice_number", columnList = "invoice_number"),
         @Index(name = "idx_sales_invoice_sales_order_id", columnList = "sales_order_id")
     }
 )
@@ -27,6 +32,9 @@ public class SalesInvoice extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @Column(name = "invoice_number", nullable = true)
+    private Long invoiceNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sales_order_id", nullable = false)

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.persistence.Index;
 import lombok.*;
 import org.hibernate.annotations.Comment;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Getter
 @Setter
@@ -11,6 +13,8 @@ import org.hibernate.annotations.Comment;
 @AllArgsConstructor
 @Builder
 @Entity
+@SQLDelete(sql = "UPDATE sales_order SET deleted = true, deleted_at = now() WHERE uuid = ?")
+@Where(clause = "deleted = false")
 @Table(
     name = "sales_order", schema = "public",
     uniqueConstraints = {
@@ -45,7 +49,7 @@ public class SalesOrder extends BaseEntity {
     private Boolean isQuote;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id", nullable = false)
+    @JoinColumn(name = "client_id", nullable = true)
     private Client client;
 
     @ManyToOne(fetch = FetchType.LAZY)

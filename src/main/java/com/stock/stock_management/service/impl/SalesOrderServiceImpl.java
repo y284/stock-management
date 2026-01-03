@@ -155,14 +155,12 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 
     // ========= Prechecks derived from schema/spec =========
     private void precheckCreate(SalesOrderDto dto) {
-        if (dto.getClientId() == null) { throw new MissingRequiredFieldException("client_id is required"); }
         if (dto.getWarehouseId() == null) { throw new MissingRequiredFieldException("warehouse_id is required"); }
         if (dto.getClientId() != null && !clientRepository.existsById(dto.getClientId())) { throw new ForeignKeyNotFoundException("client_id references missing client"); }
         if (dto.getWarehouseId() != null && !warehouseRepository.existsById(dto.getWarehouseId())) { throw new ForeignKeyNotFoundException("warehouse_id references missing warehouse"); }
     }
 
     private void precheckUpdate(Long id, SalesOrderDto dto) {
-        if (dto.getClientId() == null) { throw new MissingRequiredFieldException("client_id is required"); }
         if (dto.getWarehouseId() == null) { throw new MissingRequiredFieldException("warehouse_id is required"); }
         if (dto.getClientId() != null && !clientRepository.existsById(dto.getClientId())) { throw new ForeignKeyNotFoundException("client_id references missing client"); }
         if (dto.getWarehouseId() != null && !warehouseRepository.existsById(dto.getWarehouseId())) { throw new ForeignKeyNotFoundException("warehouse_id references missing warehouse"); }

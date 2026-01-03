@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
-  <changeSet id="003-user-constraints" author="mehdi">
+  <changeSet id="001-user-constraints" author="mehdi">
     <addAutoIncrement tableName="user" columnName="id" columnDataType="BIGINT" incrementBy="1" startWith="1"/>
     <addPrimaryKey tableName="user" columnNames="id" constraintName="pk_user"/>
     <addUniqueConstraint tableName="user" columnNames="username" constraintName="uq_user_username"/>
+    <addUniqueConstraint tableName="user" columnNames="rib" constraintName="uq_user_rib"/>
+    <addUniqueConstraint tableName="user" columnNames="email" constraintName="uq_user_email"/>
+    <addUniqueConstraint tableName="user" columnNames="keycloak_id" constraintName="uq_user_keycloak_id"/>
     <createIndex tableName="user" indexName="idx_user_uuid" unique="true">
       <column name="uuid"/>
     </createIndex>

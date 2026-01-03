@@ -31,7 +31,6 @@ public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository repository;
     private final CategoryMapper mapper;
 
-    private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
 
     // ========= Create =========
@@ -40,7 +39,7 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryDto create(CategoryDto dto) {
         precheckCreate(dto);
         Category entity = mapper.toEntity(dto);
-        if (dto.getParentId() != null) { entity.setParent(categoryRepository.getRef(dto.getParentId())); }
+        if (dto.getParentId() != null) { entity.setParent(repository.getRef(dto.getParentId())); }
         entity = repository.save(entity);
         return mapper.toDto(entity);
     }
@@ -71,7 +70,7 @@ public class CategoryServiceImpl implements CategoryService {
         if (replaced.getVersion() == null) {
             replaced.setVersion(current.getVersion());
         }
-        if (dto.getParentId() != null) { replaced.setParent(categoryRepository.getRef(dto.getParentId())); }
+        if (dto.getParentId() != null) { replaced.setParent(repository.getRef(dto.getParentId())); }
 
         replaced = repository.save(replaced);
         return mapper.toDto(replaced);
@@ -87,7 +86,7 @@ public class CategoryServiceImpl implements CategoryService {
         precheckUpdate(id, dto);
         // Non-null fields only (per mapper config)
         mapper.updateEntityFromDto(dto, entity);
-        if (dto.getParentId() != null) { entity.setParent(categoryRepository.getRef(dto.getParentId())); }
+        if (dto.getParentId() != null) { entity.setParent(repository.getRef(dto.getParentId())); }
         entity = repository.save(entity);
         return mapper.toDto(entity);
     }
@@ -147,18 +146,18 @@ public class CategoryServiceImpl implements CategoryService {
     private void precheckCreate(CategoryDto dto) {
         if (dto.getName() == null) { throw new MissingRequiredFieldException("name is required"); }
         if (dto.getName() != null && repository.existsByName(dto.getName())) { throw new DuplicateResourceException("category with name already exists"); }
-        if (dto.getParentId() != null && !categoryRepository.existsById(dto.getParentId())) { throw new ForeignKeyNotFoundException("parent_id references missing category"); }
+        if (dto.getParentId() != null && !repository.existsById(dto.getParentId())) { throw new ForeignKeyNotFoundException("parent_id references missing category"); }
     }
 
     private void precheckUpdate(Long id, CategoryDto dto) {
         if (dto.getName() == null) { throw new MissingRequiredFieldException("name is required"); }
         if (dto.getName() != null && repository.existsByNameAndIdNot(dto.getName(), id)) { throw new DuplicateResourceException("category with name already exists"); }
-        if (dto.getParentId() != null && !categoryRepository.existsById(dto.getParentId())) { throw new ForeignKeyNotFoundException("parent_id references missing category"); }
+        if (dto.getParentId() != null && !repository.existsById(dto.getParentId())) { throw new ForeignKeyNotFoundException("parent_id references missing category"); }
     }
 
     // ========= Delete guard (child refs) =========
     private void guardDelete(Long id) {
-        if (categoryRepository.countByParentId(id) > 0) { throw new ReferentialIntegrityException("category has dependent category records"); }
+        if (repository.countByParentId(id) > 0) { throw new ReferentialIntegrityException("category has dependent category records"); }
         if (productRepository.countByCategoryId(id) > 0) { throw new ReferentialIntegrityException("category has dependent product records"); }
     }
 }

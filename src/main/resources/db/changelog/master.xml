@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
   <include file="v_1_0_0/000-postgres-extensions.xml" relativeToChangelogFile="true"/>
-  <include file="v_1_0_0/001-users-table.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/001-user-table.xml" relativeToChangelogFile="true"/>
   <include file="v_1_0_0/002-warehouse-table.xml" relativeToChangelogFile="true"/>
   <include file="v_1_0_0/003-enterprise-table.xml" relativeToChangelogFile="true"/>
   <include file="v_1_0_0/004-category-table.xml" relativeToChangelogFile="true"/>
@@ -16,9 +16,9 @@
   <include file="v_1_0_0/013-purchase_invoice-table.xml" relativeToChangelogFile="true"/>
   <include file="v_1_0_0/014-sales_invoice-table.xml" relativeToChangelogFile="true"/>
   <include file="v_1_0_0/015-payment-table.xml" relativeToChangelogFile="true"/>
-  <include file="v_1_0_0/001-users-constraints.xml" relativeToChangelogFile="true"/>
-  <include file="v_1_0_0/002-warehouse-constraints.xml" relativeToChangelogFile="true"/>
   <include file="v_1_0_0/003-enterprise-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/002-warehouse-constraints.xml" relativeToChangelogFile="true"/>
+  <include file="v_1_0_0/001-user-constraints.xml" relativeToChangelogFile="true"/>
   <include file="v_1_0_0/004-category-constraints.xml" relativeToChangelogFile="true"/>
   <include file="v_1_0_0/005-product-constraints.xml" relativeToChangelogFile="true"/>
   <include file="v_1_0_0/006-supplier-constraints.xml" relativeToChangelogFile="true"/>

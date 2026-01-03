@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
-  <changeSet id="009-sale_commande-table" author="mehdi">
-    <createTable tableName="sale_commande" schemaName="public" remarks="Line of an order: product + quantity">
+  <changeSet id="001-user-table" author="mehdi">
+    <createTable tableName="user" schemaName="public" remarks="System users with warehouse access">
       <column name="id" type="BIGINT"/>
       <column name="uuid" type="UUID" defaultValueComputed="gen_random_uuid()">
         <constraints nullable="false"/>
@@ -15,18 +15,34 @@
       <column name="version" type="BIGINT" defaultValue="0">
         <constraints nullable="false"/>
       </column>
-      <column name="quantity" type="NUMERIC(14,3)">
+      <column name="deleted" type="BOOLEAN" defaultValue="false">
         <constraints nullable="false"/>
       </column>
-      <column name="price" type="NUMERIC(12,2)">
+      <column name="deleted_at" type="TIMESTAMPTZ">
+        <constraints nullable="true"/>
+      </column>
+      <column name="username" type="VARCHAR(128)">
         <constraints nullable="false"/>
       </column>
-      <column name="client_id" type="BIGINT">
+      <column name="firstname" type="VARCHAR(128)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="lastname" type="VARCHAR(128)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="rib" type="VARCHAR(34)">
+        <constraints nullable="true"/>
+      </column>
+      <column name="email" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="keycloak_id" type="VARCHAR(255)">
         <constraints nullable="false"/>
       </column>
       <column name="warehouse_id" type="BIGINT">
         <constraints nullable="false"/>
       </column>
+      <column name="is_active" type="BOOLEAN" defaultValue="1"/>
     </createTable>
   </changeSet>
 </databaseChangeLog>

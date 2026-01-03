@@ -11,8 +11,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.stock.stock_management.dto.UsersDto;
-import com.stock.stock_management.entity.Users;
+import com.stock.stock_management.dto.UserDto;
+import com.stock.stock_management.entity.User;
 
 import com.stock.stock_management.error.ResourceNotFoundException;
 import com.stock.stock_management.error.DuplicateResourceException;
@@ -21,25 +21,25 @@ import com.stock.stock_management.error.MissingRequiredFieldException;
 import com.stock.stock_management.error.ReferentialIntegrityException;
 import com.stock.stock_management.repository.WarehouseRepository;
 
-import com.stock.stock_management.mapper.UsersMapper;
-import com.stock.stock_management.repository.UsersRepository;
-import com.stock.stock_management.service.UsersService;
+import com.stock.stock_management.mapper.UserMapper;
+import com.stock.stock_management.repository.UserRepository;
+import com.stock.stock_management.service.UserService;
 
 @Service
 @RequiredArgsConstructor
-public class UsersServiceImpl implements UsersService {
+public class UserServiceImpl implements UserService {
 
-    private final UsersRepository repository;
-    private final UsersMapper mapper;
+    private final UserRepository repository;
+    private final UserMapper mapper;
 
     private final WarehouseRepository warehouseRepository;
 
     // ========= Create =========
     @Override
     @Transactional
-    public UsersDto create(UsersDto dto) {
+    public UserDto create(UserDto dto) {
         precheckCreate(dto);
-        Users entity = mapper.toEntity(dto);
+        User entity = mapper.toEntity(dto);
         if (dto.getWarehouseId() != null) { entity.setWarehouse(warehouseRepository.getRef(dto.getWarehouseId())); }
         entity = repository.save(entity);
         return mapper.toDto(entity);
@@ -48,15 +48,15 @@ public class UsersServiceImpl implements UsersService {
     // ========= Update (full replace) =========
     @Override
     @Transactional
-    public UsersDto update(Long id, UsersDto dto) {
+    public UserDto update(Long id, UserDto dto) {
         // Load current (404 if missing)
-        Users current = repository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("users not found with id=" + id));
+        User current = repository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("user not found with id=" + id));
 
         precheckUpdate(id, dto);
 
         // Build a replacement from DTO
-        Users replaced = mapper.toEntity(dto);
+        User replaced = mapper.toEntity(dto);
 
         // Enforce identifier (so Hibernate updates instead of inserting)
         replaced.setId(id);
@@ -80,9 +80,9 @@ public class UsersServiceImpl implements UsersService {
     // ========= Patch (partial update) =========
     @Override
     @Transactional
-    public UsersDto patch(Long id, UsersDto dto) {
-        Users entity = repository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("users not found with id=" + id));
+    public UserDto patch(Long id, UserDto dto) {
+        User entity = repository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("user not found with id=" + id));
 
         precheckUpdate(id, dto);
         // Non-null fields only (per mapper config)
@@ -95,31 +95,31 @@ public class UsersServiceImpl implements UsersService {
     // ========= Queries =========
     @Override
     @Transactional(readOnly = true)
-    public Optional<UsersDto> findById(Long id) {
+    public Optional<UserDto> findById(Long id) {
         return repository.findById(id).map(mapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<UsersDto> findByUuid(UUID uuid) {
+    public Optional<UserDto> findByUuid(UUID uuid) {
         return repository.findByUuid(uuid).map(mapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<UsersDto> findAll() {
+    public List<UserDto> findAll() {
         return repository.findAll().stream().map(mapper::toDto).collect(Collectors.toList());
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<UsersDto> findAll(Pageable pageable) {
+    public Page<UserDto> findAll(Pageable pageable) {
         return repository.findAll(pageable).map(mapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<UsersDto> findAll(Sort sort) {
+    public List<UserDto> findAll(Sort sort) {
         return repository.findAll(sort).stream().map(mapper::toDto).collect(Collectors.toList());
     }
 
@@ -128,7 +128,7 @@ public class UsersServiceImpl implements UsersService {
     @Transactional
     public void deleteById(Long id) {
         if (!repository.existsById(id)) {
-            throw new ResourceNotFoundException("users not found with id=" + id);
+            throw new ResourceNotFoundException("user not found with id=" + id);
         }
         guardDelete(id);
         repository.deleteById(id);
@@ -144,29 +144,31 @@ public class UsersServiceImpl implements UsersService {
     }
 
     // ========= Prechecks derived from schema/spec =========
-    private void precheckCreate(UsersDto dto) {
+    private void precheckCreate(UserDto dto) {
         if (dto.getUsername() == null) { throw new MissingRequiredFieldException("username is required"); }
         if (dto.getFirstname() == null) { throw new MissingRequiredFieldException("firstname is required"); }
         if (dto.getLastname() == null) { throw new MissingRequiredFieldException("lastname is required"); }
         if (dto.getEmail() == null) { throw new MissingRequiredFieldException("email is required"); }
         if (dto.getKeycloakId() == null) { throw new MissingRequiredFieldException("keycloak_id is required"); }
         if (dto.getWarehouseId() == null) { throw new MissingRequiredFieldException("warehouse_id is required"); }
-        if (dto.getUsername() != null && repository.existsByUsername(dto.getUsername())) { throw new DuplicateResourceException("users with username already exists"); }
-        if (dto.getEmail() != null && repository.existsByEmail(dto.getEmail())) { throw new DuplicateResourceException("users with email already exists"); }
-        if (dto.getKeycloakId() != null && repository.existsByKeycloakId(dto.getKeycloakId())) { throw new DuplicateResourceException("users with keycloak_id already exists"); }
+        if (dto.getUsername() != null && repository.existsByUsername(dto.getUsername())) { throw new DuplicateResourceException("user with username already exists"); }
+        if (dto.getRib() != null && repository.existsByRib(dto.getRib())) { throw new DuplicateResourceException("user with rib already exists"); }
+        if (dto.getEmail() != null && repository.existsByEmail(dto.getEmail())) { throw new DuplicateResourceException("user with email already exists"); }
+        if (dto.getKeycloakId() != null && repository.existsByKeycloakId(dto.getKeycloakId())) { throw new DuplicateResourceException("user with keycloak_id already exists"); }
         if (dto.getWarehouseId() != null && !warehouseRepository.existsById(dto.getWarehouseId())) { throw new ForeignKeyNotFoundException("warehouse_id references missing warehouse"); }
     }
 
-    private void precheckUpdate(Long id, UsersDto dto) {
+    private void precheckUpdate(Long id, UserDto dto) {
         if (dto.getUsername() == null) { throw new MissingRequiredFieldException("username is required"); }
         if (dto.getFirstname() == null) { throw new MissingRequiredFieldException("firstname is required"); }
         if (dto.getLastname() == null) { throw new MissingRequiredFieldException("lastname is required"); }
         if (dto.getEmail() == null) { throw new MissingRequiredFieldException("email is required"); }
         if (dto.getKeycloakId() == null) { throw new MissingRequiredFieldException("keycloak_id is required"); }
         if (dto.getWarehouseId() == null) { throw new MissingRequiredFieldException("warehouse_id is required"); }
-        if (dto.getUsername() != null && repository.existsByUsernameAndIdNot(dto.getUsername(), id)) { throw new DuplicateResourceException("users with username already exists"); }
-        if (dto.getEmail() != null && repository.existsByEmailAndIdNot(dto.getEmail(), id)) { throw new DuplicateResourceException("users with email already exists"); }
-        if (dto.getKeycloakId() != null && repository.existsByKeycloakIdAndIdNot(dto.getKeycloakId(), id)) { throw new DuplicateResourceException("users with keycloak_id already exists"); }
+        if (dto.getUsername() != null && repository.existsByUsernameAndIdNot(dto.getUsername(), id)) { throw new DuplicateResourceException("user with username already exists"); }
+        if (dto.getRib() != null && repository.existsByRibAndIdNot(dto.getRib(), id)) { throw new DuplicateResourceException("user with rib already exists"); }
+        if (dto.getEmail() != null && repository.existsByEmailAndIdNot(dto.getEmail(), id)) { throw new DuplicateResourceException("user with email already exists"); }
+        if (dto.getKeycloakId() != null && repository.existsByKeycloakIdAndIdNot(dto.getKeycloakId(), id)) { throw new DuplicateResourceException("user with keycloak_id already exists"); }
         if (dto.getWarehouseId() != null && !warehouseRepository.existsById(dto.getWarehouseId())) { throw new ForeignKeyNotFoundException("warehouse_id references missing warehouse"); }
     }
 

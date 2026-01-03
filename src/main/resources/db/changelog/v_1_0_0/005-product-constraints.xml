@@ -3,13 +3,16 @@
   <changeSet id="005-product-constraints" author="mehdi">
     <addAutoIncrement tableName="product" columnName="id" columnDataType="BIGINT" incrementBy="1" startWith="1"/>
     <addPrimaryKey tableName="product" columnNames="id" constraintName="pk_product"/>
-    <addUniqueConstraint tableName="product" columnNames="sku" constraintName="uq_product_sku"/>
+    <addUniqueConstraint tableName="product" columnNames="description" constraintName="uq_product_description"/>
     <createIndex tableName="product" indexName="idx_product_uuid" unique="true">
       <column name="uuid"/>
     </createIndex>
     <addForeignKeyConstraint constraintName="fk_product_category_id_category" baseTableName="product" baseColumnNames="category_id" referencedTableName="category" referencedColumnNames="id"/>
     <createIndex tableName="product" indexName="idx_product_category_id">
       <column name="category_id"/>
+    </createIndex>
+    <createIndex tableName="product" indexName="idx_product_name">
+      <column name="name"/>
     </createIndex>
   </changeSet>
 </databaseChangeLog>

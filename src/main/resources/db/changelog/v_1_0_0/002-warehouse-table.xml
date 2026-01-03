@@ -15,6 +15,12 @@
       <column name="version" type="BIGINT" defaultValue="0">
         <constraints nullable="false"/>
       </column>
+      <column name="deleted" type="BOOLEAN" defaultValue="false">
+        <constraints nullable="false"/>
+      </column>
+      <column name="deleted_at" type="TIMESTAMPTZ">
+        <constraints nullable="true"/>
+      </column>
       <column name="name" type="VARCHAR(255)">
         <constraints nullable="false"/>
       </column>

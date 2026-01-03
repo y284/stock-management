@@ -25,7 +25,7 @@ import com.stock.stock_management.repository.PurchaseOrderRepository;
 import com.stock.stock_management.repository.SalesOrderRepository;
 import com.stock.stock_management.repository.StockLevelRepository;
 import com.stock.stock_management.repository.SupplierRepository;
-import com.stock.stock_management.repository.UsersRepository;
+import com.stock.stock_management.repository.UserRepository;
 import com.stock.stock_management.mapper.WarehouseMapper;
 import com.stock.stock_management.repository.WarehouseRepository;
 import com.stock.stock_management.service.WarehouseService;
@@ -38,7 +38,7 @@ public class WarehouseServiceImpl implements WarehouseService {
     private final WarehouseMapper mapper;
 
     private final EnterpriseRepository enterpriseRepository;
-    private final UsersRepository usersRepository;
+    private final UserRepository userRepository;
     private final SupplierRepository supplierRepository;
     private final ClientRepository clientRepository;
     private final PurchaseOrderRepository purchaseOrderRepository;
@@ -173,7 +173,7 @@ public class WarehouseServiceImpl implements WarehouseService {
 
     // ========= Delete guard (child refs) =========
     private void guardDelete(Long id) {
-        if (usersRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent users records"); }
+        if (userRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent user records"); }
         if (supplierRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent supplier records"); }
         if (clientRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent client records"); }
         if (purchaseOrderRepository.countByWarehouseId(id) > 0) { throw new ReferentialIntegrityException("warehouse has dependent purchase_order records"); }

@@ -22,7 +22,7 @@ public class SalesOrderDto extends BaseDto {
     @Digits(integer = 10, fraction = 2) @PositiveOrZero private java.math.BigDecimal amountPaid;
     @Size(max = 32) private String status;
     private Boolean isQuote;
-    @NotNull private Long clientId;
+    private Long clientId;
     @NotNull private Long warehouseId;
 
 }

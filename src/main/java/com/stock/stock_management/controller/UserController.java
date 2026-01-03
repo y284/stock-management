@@ -1,7 +1,7 @@
 package com.stock.stock_management.controller;
 
-import com.stock.stock_management.dto.UsersDto;
-import com.stock.stock_management.service.UsersService;
+import com.stock.stock_management.dto.UserDto;
+import com.stock.stock_management.service.UserService;
 import com.stock.stock_management.error.ResourceNotFoundException;
 import org.springframework.http.*;
 import org.springframework.validation.annotation.Validated;
@@ -18,23 +18,23 @@ import java.util.UUID;
 
 @RestController
 @Validated
-@RequestMapping(path = "/api/users", produces = MediaType.APPLICATION_JSON_VALUE)
-public class UsersController {
+@RequestMapping(path = "/api/user", produces = MediaType.APPLICATION_JSON_VALUE)
+public class UserController {
 
-    private final UsersService service;
+    private final UserService service;
 
-    public UsersController(UsersService service) {
+    public UserController(UserService service) {
         this.service = service;
     }
 
     // ===== Read =====
     @GetMapping
-    public List<UsersDto> list() {
+    public List<UserDto> list() {
         return service.findAll();
     }
 
     @GetMapping("/page")
-    public Page<UsersDto> listPage(
+    public Page<UserDto> listPage(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
             Sort sort) {
@@ -43,26 +43,26 @@ public class UsersController {
     }
 
     @GetMapping("/sorted")
-    public List<UsersDto> listSorted(Sort sort) {
+    public List<UserDto> listSorted(Sort sort) {
         return service.findAll(sort);
     }
 
     @GetMapping("/{id}")
-    public UsersDto get(@PathVariable Long id) {
+    public UserDto get(@PathVariable Long id) {
         return service.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("users not found with id=" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("user not found with id=" + id));
     }
 
     @GetMapping("/uuid/{uuid}")
-    public UsersDto getByUuid(@PathVariable UUID uuid) {
+    public UserDto getByUuid(@PathVariable UUID uuid) {
         return service.findByUuid(uuid)
-                .orElseThrow(() -> new ResourceNotFoundException("users not found with uuid=" + uuid));
+                .orElseThrow(() -> new ResourceNotFoundException("user not found with uuid=" + uuid));
     }
 
     // ===== Create =====
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UsersDto> create(@Valid @RequestBody UsersDto dto) {
-        UsersDto created = service.create(dto);
+    public ResponseEntity<UserDto> create(@Valid @RequestBody UserDto dto) {
+        UserDto created = service.create(dto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/uuid/{id}")
@@ -73,13 +73,13 @@ public class UsersController {
 
     // ===== Update (full replace) =====
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public UsersDto update(@PathVariable Long id, @Valid @RequestBody UsersDto dto) {
+    public UserDto update(@PathVariable Long id, @Valid @RequestBody UserDto dto) {
         return service.update(id, dto);
     }
 
     // ===== Patch (partial) =====
     @PatchMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public UsersDto patch(@PathVariable Long id, @RequestBody UsersDto dto) {
+    public UserDto patch(@PathVariable Long id, @RequestBody UserDto dto) {
         return service.patch(id, dto);
     }
 

@@ -150,16 +150,16 @@ public class ProductServiceImpl implements ProductService {
 
     // ========= Prechecks derived from schema/spec =========
     private void precheckCreate(ProductDto dto) {
-        if (dto.getSku() == null) { throw new MissingRequiredFieldException("sku is required"); }
+        if (dto.getDescription() == null) { throw new MissingRequiredFieldException("description is required"); }
         if (dto.getName() == null) { throw new MissingRequiredFieldException("name is required"); }
-        if (dto.getSku() != null && repository.existsBySku(dto.getSku())) { throw new DuplicateResourceException("product with sku already exists"); }
+        if (dto.getDescription() != null && repository.existsByDescription(dto.getDescription())) { throw new DuplicateResourceException("product with description already exists"); }
         if (dto.getCategoryId() != null && !categoryRepository.existsById(dto.getCategoryId())) { throw new ForeignKeyNotFoundException("category_id references missing category"); }
     }
 
     private void precheckUpdate(Long id, ProductDto dto) {
-        if (dto.getSku() == null) { throw new MissingRequiredFieldException("sku is required"); }
+        if (dto.getDescription() == null) { throw new MissingRequiredFieldException("description is required"); }
         if (dto.getName() == null) { throw new MissingRequiredFieldException("name is required"); }
-        if (dto.getSku() != null && repository.existsBySkuAndIdNot(dto.getSku(), id)) { throw new DuplicateResourceException("product with sku already exists"); }
+        if (dto.getDescription() != null && repository.existsByDescriptionAndIdNot(dto.getDescription(), id)) { throw new DuplicateResourceException("product with description already exists"); }
         if (dto.getCategoryId() != null && !categoryRepository.existsById(dto.getCategoryId())) { throw new ForeignKeyNotFoundException("category_id references missing category"); }
     }
 

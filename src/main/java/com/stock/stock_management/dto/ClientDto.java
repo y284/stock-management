@@ -19,7 +19,7 @@ public class ClientDto extends BaseDto {
     private Long id;
     @NotNull @Size(max = 255) private String fullname;
     @Size(max = 255) @Email private String email;
-    @NotNull @Size(max = 34) private String iban;
+    @Size(max = 34) private String rib;
     @NotNull private Long warehouseId;
     private Boolean isActive;
 
