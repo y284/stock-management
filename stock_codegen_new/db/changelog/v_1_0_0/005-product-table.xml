@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
+  <changeSet id="005-product-table" author="mehdi">
+    <createTable tableName="product" schemaName="public" remarks="Product catalog with pricing and categorization">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" primaryKeyName="pk_product"/>
+      </column>
+      <column name="uuid" type="UUID" defaultValueComputed="gen_random_uuid()">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="created_at" type="TIMESTAMPTZ" defaultValueComputed="CURRENT_TIMESTAMP">
+        <constraints nullable="false"/>
+      </column>
+      <column name="updated_at" type="TIMESTAMPTZ" defaultValueComputed="CURRENT_TIMESTAMP">
+        <constraints nullable="false"/>
+      </column>
+      <column name="version" type="BIGINT" defaultValue="0">
+        <constraints nullable="false"/>
+      </column>
+      <column name="deleted" type="BOOLEAN" defaultValue="false">
+        <constraints nullable="false"/>
+      </column>
+      <column name="deleted_at" type="TIMESTAMPTZ">
+        <constraints nullable="true"/>
+      </column>
+      <column name="description" type="VARCHAR(255)">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="name" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="price" type="NUMERIC(12,2)" defaultValue="0.00"/>
+      <column name="tva" type="NUMERIC(5,2)" defaultValue="0.00"/>
+      <column name="category_id" type="BIGINT">
+        <constraints nullable="true"/>
+      </column>
+      <column name="unit_of_measure" type="VARCHAR(32)" defaultValue="'unit'"/>
+      <column name="is_active" type="BOOLEAN" defaultValue="true"/>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>

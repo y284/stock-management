@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
+  <changeSet id="011-sales_order_line-constraints" author="mehdi">
+    <addAutoIncrement tableName="sales_order_line" columnName="id" columnDataType="BIGINT" incrementBy="1" startWith="1"/>
+    <createIndex tableName="sales_order_line" indexName="idx_sales_order_line_uuid" unique="true">
+      <column name="uuid"/>
+    </createIndex>
+    <addForeignKeyConstraint constraintName="fk_sales_order_line_sales_order_id_sales_order" baseTableName="sales_order_line" baseColumnNames="sales_order_id" referencedTableName="sales_order" referencedColumnNames="id"/>
+    <createIndex tableName="sales_order_line" indexName="idx_sales_order_line_sales_order_id">
+      <column name="sales_order_id"/>
+    </createIndex>
+    <addForeignKeyConstraint constraintName="fk_sales_order_line_product_id_product" baseTableName="sales_order_line" baseColumnNames="product_id" referencedTableName="product" referencedColumnNames="id"/>
+    <createIndex tableName="sales_order_line" indexName="idx_sales_order_line_product_id">
+      <column name="product_id"/>
+    </createIndex>
+  </changeSet>
+</databaseChangeLog>

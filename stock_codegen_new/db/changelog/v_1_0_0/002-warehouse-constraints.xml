@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
+  <changeSet id="002-warehouse-constraints" author="mehdi">
+    <addAutoIncrement tableName="warehouse" columnName="id" columnDataType="BIGINT" incrementBy="1" startWith="1"/>
+    <addUniqueConstraint tableName="warehouse" columnNames="code" constraintName="uq_warehouse_code"/>
+    <createIndex tableName="warehouse" indexName="idx_warehouse_uuid" unique="true">
+      <column name="uuid"/>
+    </createIndex>
+    <addForeignKeyConstraint constraintName="fk_warehouse_enterprise_id_enterprise" baseTableName="warehouse" baseColumnNames="enterprise_id" referencedTableName="enterprise" referencedColumnNames="id"/>
+    <createIndex tableName="warehouse" indexName="idx_warehouse_enterprise_id">
+      <column name="enterprise_id"/>
+    </createIndex>
+  </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
+  <changeSet id="012-stock_level-constraints" author="mehdi">
+    <createIndex tableName="stock_level" indexName="idx_stock_level_uuid" unique="true">
+      <column name="uuid"/>
+    </createIndex>
+    <addForeignKeyConstraint constraintName="fk_stock_level_product_id_product" baseTableName="stock_level" baseColumnNames="product_id" referencedTableName="product" referencedColumnNames="id"/>
+    <createIndex tableName="stock_level" indexName="idx_stock_level_product_id">
+      <column name="product_id"/>
+    </createIndex>
+    <addForeignKeyConstraint constraintName="fk_stock_level_warehouse_id_warehouse" baseTableName="stock_level" baseColumnNames="warehouse_id" referencedTableName="warehouse" referencedColumnNames="id"/>
+    <createIndex tableName="stock_level" indexName="idx_stock_level_warehouse_id">
+      <column name="warehouse_id"/>
+    </createIndex>
+  </changeSet>
+</databaseChangeLog>

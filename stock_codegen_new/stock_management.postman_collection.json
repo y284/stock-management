@@ -1,0 +1,5244 @@
+{
+  "info": {
+    "name": "Stock Management API",
+    "_postman_id": "auto-generated",
+    "description": "Auto-generated collection for Spring Boot API testing (Basic Auth). Set username/password in the environment.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{username}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{password}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "uuid",
+      "value": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/user\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/user/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/user/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/user/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/user/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/user\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"username\": \"string\",\n  \"firstname\": \"string\",\n  \"lastname\": \"string\",\n  \"rib\": \"string\",\n  \"email\": \"string\",\n  \"keycloak_id\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"string\",\n  \"firstname\": \"string\",\n  \"lastname\": \"string\",\n  \"rib\": \"string\",\n  \"email\": \"string\",\n  \"keycloak_id\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/user/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"username\": \"string\",\n  \"firstname\": \"string\",\n  \"lastname\": \"string\",\n  \"rib\": \"string\",\n  \"email\": \"string\",\n  \"keycloak_id\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"string\",\n  \"firstname\": \"string\",\n  \"lastname\": \"string\",\n  \"rib\": \"string\",\n  \"email\": \"string\",\n  \"keycloak_id\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/user/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"username\": \"string\",\n  \"firstname\": \"string\",\n  \"lastname\": \"string\",\n  \"rib\": \"string\",\n  \"email\": \"string\",\n  \"keycloak_id\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"string\",\n  \"firstname\": \"string\",\n  \"lastname\": \"string\",\n  \"rib\": \"string\",\n  \"email\": \"string\",\n  \"keycloak_id\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/user/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/user/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Warehouse",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/warehouse\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/warehouse",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "warehouse"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/warehouse/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/warehouse/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "warehouse",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/warehouse/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/warehouse/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "warehouse",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/warehouse/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/warehouse/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "warehouse",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/warehouse/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/warehouse/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "warehouse",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/warehouse\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"enterpriseId\": 1\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/warehouse",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "warehouse"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"enterpriseId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/warehouse/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"enterpriseId\": 1\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/warehouse/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "warehouse",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"enterpriseId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/warehouse/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"enterpriseId\": 1\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/warehouse/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "warehouse",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"enterpriseId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/warehouse/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/warehouse/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "warehouse",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/warehouse/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/warehouse/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "warehouse",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/enterprise\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enterprise",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "enterprise"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/enterprise/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enterprise/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "enterprise",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/enterprise/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enterprise/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "enterprise",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/enterprise/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enterprise/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "enterprise",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/enterprise/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enterprise/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "enterprise",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/enterprise\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"name\": \"string\",\n  \"location\": \"string\"\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enterprise",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "enterprise"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"string\",\n  \"location\": \"string\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/enterprise/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"name\": \"string\",\n  \"location\": \"string\"\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enterprise/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "enterprise",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"string\",\n  \"location\": \"string\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/enterprise/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"name\": \"string\",\n  \"location\": \"string\"\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enterprise/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "enterprise",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"string\",\n  \"location\": \"string\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/enterprise/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enterprise/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "enterprise",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/enterprise/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enterprise/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "enterprise",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Category",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/category\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/category",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "category"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/category/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/category/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "category",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/category/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/category/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "category",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/category/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/category/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "category",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/category/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/category/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "category",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/category\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"name\": \"string\",\n  \"parentId\": 1\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/category",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "category"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"string\",\n  \"parentId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/category/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"name\": \"string\",\n  \"parentId\": 1\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/category/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "category",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"string\",\n  \"parentId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/category/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"name\": \"string\",\n  \"parentId\": 1\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/category/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "category",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"string\",\n  \"parentId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/category/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/category/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "category",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/category/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/category/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "category",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/product\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/product",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "product"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/product/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/product/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "product",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/product/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/product/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "product",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/product/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/product/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "product",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/product/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/product/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "product",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/product\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"price\": 0.0,\n  \"tva\": 0.0,\n  \"categoryId\": 1,\n  \"unit_of_measure\": \"string\",\n  \"is_active\": false\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/product",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "product"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"price\": 0.0,\n  \"tva\": 0.0,\n  \"categoryId\": 1,\n  \"unit_of_measure\": \"string\",\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/product/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"price\": 0.0,\n  \"tva\": 0.0,\n  \"categoryId\": 1,\n  \"unit_of_measure\": \"string\",\n  \"is_active\": false\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/product/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "product",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"price\": 0.0,\n  \"tva\": 0.0,\n  \"categoryId\": 1,\n  \"unit_of_measure\": \"string\",\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/product/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"price\": 0.0,\n  \"tva\": 0.0,\n  \"categoryId\": 1,\n  \"unit_of_measure\": \"string\",\n  \"is_active\": false\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/product/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "product",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"price\": 0.0,\n  \"tva\": 0.0,\n  \"categoryId\": 1,\n  \"unit_of_measure\": \"string\",\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/product/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/product/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "product",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/product/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/product/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "product",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Supplier",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/supplier\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/supplier",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "supplier"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/supplier/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/supplier/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "supplier",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/supplier/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/supplier/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "supplier",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/supplier/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/supplier/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "supplier",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/supplier/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/supplier/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "supplier",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/supplier\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/supplier",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "supplier"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/supplier/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/supplier/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "supplier",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/supplier/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/supplier/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "supplier",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/supplier/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/supplier/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "supplier",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/supplier/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/supplier/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "supplier",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Client",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/client\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/client",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "client"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/client/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/client/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "client",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/client/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/client/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "client",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/client/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/client/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "client",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/client/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/client/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "client",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/client\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/client",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "client"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/client/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/client/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "client",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/client/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/client/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "client",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullname\": \"string\",\n  \"email\": \"string\",\n  \"rib\": \"string\",\n  \"warehouseId\": 1,\n  \"is_active\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/client/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/client/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "client",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/client/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/client/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "client",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PurchaseOrder",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-order\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-order/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-order/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-order/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-order/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/purchase-order\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"supplierId\": 1,\n  \"warehouseId\": 1\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"supplierId\": 1,\n  \"warehouseId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/purchase-order/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"supplierId\": 1,\n  \"warehouseId\": 1\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"supplierId\": 1,\n  \"warehouseId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/purchase-order/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"supplierId\": 1,\n  \"warehouseId\": 1\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"supplierId\": 1,\n  \"warehouseId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/purchase-order/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/purchase-order/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PurchaseOrderLine",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-order-line\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order-line",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order-line"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-order-line/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order-line/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order-line",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-order-line/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order-line/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order-line",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-order-line/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order-line/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order-line",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-order-line/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order-line/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order-line",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/purchase-order-line\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"purchase_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order-line",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order-line"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"purchase_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/purchase-order-line/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"purchase_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order-line/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order-line",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"purchase_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/purchase-order-line/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"purchase_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order-line/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order-line",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"purchase_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/purchase-order-line/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order-line/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order-line",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/purchase-order-line/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-order-line/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-order-line",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SalesOrder",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-order\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-order/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-order/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-order/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-order/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/sales-order\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"clientId\": 1,\n  \"warehouseId\": 1\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"clientId\": 1,\n  \"warehouseId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/sales-order/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"clientId\": 1,\n  \"warehouseId\": 1\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"clientId\": 1,\n  \"warehouseId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/sales-order/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"clientId\": 1,\n  \"warehouseId\": 1\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"amount_paid\": 0.0,\n  \"status\": \"string\",\n  \"is_quote\": false,\n  \"clientId\": 1,\n  \"warehouseId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/sales-order/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/sales-order/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SalesOrderLine",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-order-line\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order-line",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order-line"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-order-line/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order-line/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order-line",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-order-line/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order-line/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order-line",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-order-line/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order-line/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order-line",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-order-line/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order-line/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order-line",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/sales-order-line\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"sales_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order-line",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order-line"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sales_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/sales-order-line/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"sales_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order-line/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order-line",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sales_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/sales-order-line/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"sales_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order-line/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order-line",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sales_orderId\": 1,\n  \"productId\": 1,\n  \"quantity\": 0.0,\n  \"unit_price\": 0.0,\n  \"discount\": 0.0\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/sales-order-line/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order-line/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order-line",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/sales-order-line/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-order-line/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-order-line",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "StockLevel",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/stock-level\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/stock-level",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "stock-level"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/stock-level/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/stock-level/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "stock-level",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/stock-level/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/stock-level/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "stock-level",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({product_id}/{warehouse_id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/stock-level/{product_id}/{warehouse_id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/stock-level/{product_id}/{warehouse_id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "stock-level",
+                "{product_id}",
+                "{warehouse_id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({product_id}/{warehouse_id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/stock-level/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/stock-level/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "stock-level",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/stock-level\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"current_qty\": 0.0,\n  \"reserved_qty\": 0.0,\n  \"stock_alert_qty\": 0.0\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/stock-level",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "stock-level"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"current_qty\": 0.0,\n  \"reserved_qty\": 0.0,\n  \"stock_alert_qty\": 0.0\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {product_id}/{warehouse_id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/stock-level/{product_id}/{warehouse_id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"current_qty\": 0.0,\n  \"reserved_qty\": 0.0,\n  \"stock_alert_qty\": 0.0\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/stock-level/{product_id}/{warehouse_id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "stock-level",
+                "{product_id}",
+                "{warehouse_id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"current_qty\": 0.0,\n  \"reserved_qty\": 0.0,\n  \"stock_alert_qty\": 0.0\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {product_id}/{warehouse_id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {product_id}/{warehouse_id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/stock-level/{product_id}/{warehouse_id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"current_qty\": 0.0,\n  \"reserved_qty\": 0.0,\n  \"stock_alert_qty\": 0.0\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/stock-level/{product_id}/{warehouse_id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "stock-level",
+                "{product_id}",
+                "{warehouse_id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"current_qty\": 0.0,\n  \"reserved_qty\": 0.0,\n  \"stock_alert_qty\": 0.0\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {product_id}/{warehouse_id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {product_id}/{warehouse_id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/stock-level/{product_id}/{warehouse_id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/stock-level/{product_id}/{warehouse_id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "stock-level",
+                "{product_id}",
+                "{warehouse_id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {product_id}/{warehouse_id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/stock-level/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/stock-level/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "stock-level",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PurchaseInvoice",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-invoice\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-invoice",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-invoice"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-invoice/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-invoice/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-invoice",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-invoice/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-invoice/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-invoice",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-invoice/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-invoice/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-invoice",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/purchase-invoice/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-invoice/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-invoice",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/purchase-invoice\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"purchase_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-invoice",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-invoice"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"purchase_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/purchase-invoice/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"purchase_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-invoice/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-invoice",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"purchase_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/purchase-invoice/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"purchase_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-invoice/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-invoice",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"purchase_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/purchase-invoice/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-invoice/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-invoice",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/purchase-invoice/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/purchase-invoice/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "purchase-invoice",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SalesInvoice",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-invoice\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-invoice",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-invoice"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-invoice/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-invoice/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-invoice",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-invoice/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-invoice/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-invoice",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-invoice/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-invoice/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-invoice",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/sales-invoice/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-invoice/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-invoice",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/sales-invoice\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"invoice_number\": 1,\n  \"sales_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-invoice",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-invoice"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"invoice_number\": 1,\n  \"sales_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/sales-invoice/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"invoice_number\": 1,\n  \"sales_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-invoice/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-invoice",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"invoice_number\": 1,\n  \"sales_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/sales-invoice/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"invoice_number\": 1,\n  \"sales_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-invoice/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-invoice",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"invoice_number\": 1,\n  \"sales_orderId\": 1,\n  \"issue_date\": \"2025-01-01T00:00:00Z\",\n  \"due_date\": \"2025-01-01T00:00:00Z\",\n  \"total_amount\": 0.0,\n  \"paid_amount\": 0.0,\n  \"status\": \"string\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/sales-invoice/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-invoice/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-invoice",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/sales-invoice/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/sales-invoice/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sales-invoice",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Payment",
+      "item": [
+        {
+          "name": "List All",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/payment\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payment"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List All",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Page",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/payment/page?size=20&page=0&sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payment/page",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payment",
+                "page"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Page",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "List Sorted",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/payment/sorted?sort=id,desc\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payment/sorted",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payment",
+                "sorted"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example List Sorted",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by ID ({id})",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/payment/{id}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payment/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payment",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by ID ({id})",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Get by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X GET \"{{baseUrl}}/api/payment/uuid/{uuid}\"",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payment/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payment",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Get by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X POST \"{{baseUrl}}/api/payment\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"amount\": 0.0,\n  \"payment_method\": \"string\",\n  \"payment_type\": \"string\",\n  \"sales_orderId\": 1\n}'",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payment"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 0.0,\n  \"payment_method\": \"string\",\n  \"payment_type\": \"string\",\n  \"sales_orderId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Create",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Update (PUT) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PUT \"{{baseUrl}}/api/payment/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"amount\": 0.0,\n  \"payment_method\": \"string\",\n  \"payment_type\": \"string\",\n  \"sales_orderId\": 1\n}'",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payment/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payment",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 0.0,\n  \"payment_method\": \"string\",\n  \"payment_type\": \"string\",\n  \"sales_orderId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Update (PUT) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Patch (Partial) {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X PATCH \"{{baseUrl}}/api/payment/{id}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"amount\": 0.0,\n  \"payment_method\": \"string\",\n  \"payment_type\": \"string\",\n  \"sales_orderId\": 1\n}'",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payment/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payment",
+                "{id}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 0.0,\n  \"payment_method\": \"string\",\n  \"payment_type\": \"string\",\n  \"sales_orderId\": 1\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Example Patch (Partial) {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by ID {id}",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/payment/{id}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payment/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payment",
+                "{id}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by ID {id}",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "Delete by UUID",
+          "request": {
+            "description": "curl -u \"{{username}}:{{password}}\" -X DELETE \"{{baseUrl}}/api/payment/uuid/{uuid}\"",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payment/uuid/{uuid}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payment",
+                "uuid",
+                "{uuid}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Example Delete by UUID",
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

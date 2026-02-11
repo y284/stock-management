@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
+  <changeSet id="004-category-constraints" author="mehdi">
+    <addAutoIncrement tableName="category" columnName="id" columnDataType="BIGINT" incrementBy="1" startWith="1"/>
+    <addUniqueConstraint tableName="category" columnNames="name" constraintName="uq_category_name"/>
+    <createIndex tableName="category" indexName="idx_category_uuid" unique="true">
+      <column name="uuid"/>
+    </createIndex>
+    <addForeignKeyConstraint constraintName="fk_category_parent_id_category" baseTableName="category" baseColumnNames="parent_id" referencedTableName="category" referencedColumnNames="id"/>
+    <createIndex tableName="category" indexName="idx_category_parent_id">
+      <column name="parent_id"/>
+    </createIndex>
+  </changeSet>
+</databaseChangeLog>
